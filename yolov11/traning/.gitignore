@@ -1,8 +1,0 @@
-# 忽略所有文件
-*
-
-# 排除 .ipynb 文件
-!*.ipynb
-
-# 排除 .gitignore 文件
-!.gitignore
