@@ -1,0 +1,43 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE and editor configuration files
+.idea/
+.vscode/
+*.swp
+*.sublime-workspace
+
+# Compiled and binary files
+*.class
+*.o
+*.a
+*.so
+*.exe
+*.out
+*.app
+
+# Python virtual environments and dependencies
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node.js related files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Log files
+*.log
+
+# Database files
+*.sqlite
+*.db
+
+# Other common ignore items
+.env
+*.bak
+*.tmp
