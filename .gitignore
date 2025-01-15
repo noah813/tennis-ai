@@ -41,3 +41,9 @@ yarn-error.log
 .env
 *.bak
 *.tmp
+
+# Training data
+runs/
+
+# assets
+assets/
