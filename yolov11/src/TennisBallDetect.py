@@ -1,3 +1,4 @@
+import argparse 
 from ultralytics import YOLO
 
 # 設置命令行參數解析
@@ -8,6 +9,7 @@ args = parser.parse_args()  # 修正 parseArgs 為 parse_args
 
 # 加載訓練好的模型
 model = YOLO(args.modelPath)
+model.to('cpu')
 
 # 載入視頻 
 videoPath = args.videoPath
