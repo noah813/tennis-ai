@@ -1,2 +1,3 @@
--r ./scripts/requirements.txt
--r ./yolov11/requirements.txt
+opencv-python
+ultralytics
+roboflow

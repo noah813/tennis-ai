@@ -24,6 +24,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.conda/
 
 # Node.js related files
 node_modules/
