@@ -45,3 +45,6 @@ yarn-error.log
 
 # Training data
 runs/
+
+# pridiction data
+output.mp4
