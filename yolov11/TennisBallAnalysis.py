@@ -19,6 +19,9 @@ def main(video_path, model_path):
     
     # Detect tennis ball in each frame
     ball_detections = tennis_ball.detect_frames(frames)
+    # ball_detections = tennis_ball.interpolate_ball_positions(ball_detections)
+
+    # Draw output
     outputVideoFrames = tennis_ball.draw_bboxes(frames, ball_detections)
 
     save_video(outputVideoFrames)
