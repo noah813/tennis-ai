@@ -192,7 +192,7 @@ if __name__ == '__main__':
     # Draw reference line
     frames = createReferenceLine(frames)
 
-    frames = detect_ball_speed(frames, ball_track,30)
+    frames = detect_ball_speed(frames, ball_track,fps)
         
     write_track(frames, ball_track, args.video_out_path, fps)    
     

@@ -58,19 +58,19 @@ def detect_ball_speed(frames, ball_track, fps, reference_Line=820, trace=7):
     for num in range(len(frames)):
         frame = frames[num]
         for i in range(trace):
-            if (num-i > 0):
-                if ball_track[num-i][0]:
-                    x = int(ball_track[num-i][0])
-                    y = int(ball_track[num-i][1])
+            if (num > 0):
+                if ball_track[num][0]:
+                    x = int(ball_track[num][0])
+                    y = int(ball_track[num][1])
                     if x < reference_Line:
-                        prev_positions[num-i] = x
+                        prev_positions[num] = x
                     
                     # 當球位於參考線右側時，若之前有紀錄則計算像素距離
                     elif x > reference_Line:
                         if num in prev_positions:
-                            speed = x - prev_positions[num-i]
+                            speed = x - prev_positions[num]
                             # 在畫面上顯示速度資訊
-                            speed = x - prev_positions[num-i]
+                            speed = x - prev_positions[num]
                             # 準備文字內容
                             text = f"Speed: {speed:.2f} pixels/sec"
                             # 取得文字尺寸 (字寬, 字高)
@@ -84,9 +84,9 @@ def detect_ball_speed(frames, ball_track, fps, reference_Line=820, trace=7):
                             cv2.putText(frame, text, (x_pos, y_pos), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2)
                         else:
                             # 若找不到 prev_positions，則不做計算
-                            speed = x - prev_positions[num-i]
+                            speed = x - prev_positions[num]
                             # 在畫面上顯示速度資訊
-                            speed = x - prev_positions[num-i]
+                            speed = x - prev_positions[num]
                             # 準備文字內容
                             text = f"Speed: {speed:.2f} pixels/sec"
                             # 取得文字尺寸 (字寬, 字高)
