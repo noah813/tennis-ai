@@ -2,10 +2,9 @@ from ultralytics import YOLO
 from tqdm import tqdm
 import pickle
 import cv2
-import pandas as pd
 
 class TennisBall:
-    def __init__(self,model_path):
+    def __init__(self, model_path):
         self.model = YOLO(model_path)
 
     def detect_frames(self,frames, read_from_stub=False, stub_path=None):
