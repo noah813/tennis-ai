@@ -4,6 +4,7 @@ import sys
 #讀取影片
 def read_video(video_path):
     cap = cv2.VideoCapture(video_path)
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
     if not cap.isOpened():
         print(f"Error: Can't open video {video_path}")
         sys.exit(1)
@@ -17,7 +18,7 @@ def read_video(video_path):
             frames.append(frame)
     finally:
         cap.release()
-    return frames
+    return frames, fps
 
 #儲存影片
 def save_video(frame_array, output_path='output.mp4', fps=24):

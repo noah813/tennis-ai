@@ -1,25 +1,30 @@
-from detection.TennisBall import TennisBall
 import cv2
 import argparse
 import sys
 import os
 
-# Import general utility functions
+# Import package
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 from utils.Video import read_video, save_video
+from tracker.TennisBall import TennisBall
+from anaylysis.TennisBallSpeed import createReferenceLine, detect_ball_speed
 
 def main(video_path, model_path):
     # Read video
-    frames = read_video(video_path)
+    frames, fps = read_video(video_path)
 
     # Initialize TennisBall object
     tennis_ball = TennisBall(model_path)
     
     # Detect tennis ball in each frame
     ball_detections = tennis_ball.detect_frames(frames)
-    # ball_detections = tennis_ball.interpolate_ball_positions(ball_detections)
+
+    # Draw reference line
+    frames = createReferenceLine(frames)
+
+    frames = detect_ball_speed(frames, ball_detections)
 
     # Draw output
     outputVideoFrames = tennis_ball.draw_bboxes(frames, ball_detections)
