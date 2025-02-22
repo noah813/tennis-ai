@@ -42,9 +42,3 @@ yarn-error.log
 .env
 *.bak
 *.tmp
-
-# Training data
-runs/
-
-# pridiction data
-output.mp4
