@@ -1,5 +1,5 @@
-import cv2
-import sys
+import cv2 
+import sys 
 
 def read_video(video_path):
     cap = cv2.VideoCapture(video_path)
@@ -19,7 +19,7 @@ def read_video(video_path):
         cap.release()
     return frames, fps
 
-def save_video(frame_array, output_path='output.mp4', fps=24):
+def save_video(frame_array, output_path, fps):
     height, width, _ = frame_array[0].shape
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_path, fourcc, fps, (width, height))
