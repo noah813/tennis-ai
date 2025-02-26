@@ -1,9 +1,27 @@
-from ball_tracker import BallTracker
+import argparse
 from utils import read_video, save_video
+from .ball_tracker import BallTracker
 
-def inference(model_path,video_path, output_path):
-    ball_tracker = BallTracker(model_path)
+def main(video_path, model_path):
+    # Read video
     frames, fps = read_video(video_path)
-    ball_detections = ball_tracker.detect_frames(frames)
-    output_video_frames = draw_bboxes(frames, ball_detections)
-    save_video(output_video_frames, output_path, fps)
+
+    # Initialize TennisBall object
+    tennis_ball = BallTracker(model_path)
+    
+    # Detect tennis ball in each frame
+    ball_detections = tennis_ball.detect_frames(frames)
+
+    # Draw output
+    outputVideoFrames = tennis_ball.draw_bboxes(frames, ball_detections)
+
+    save_video(outputVideoFrames)
+
+if __name__ == "__main__":
+    # Arguments list
+    parser = argparse.ArgumentParser(description='Analyze video using trained model and save the output.')
+    parser.add_argument('--modelPath', type=str, required=True, help='Path to the model file')
+    parser.add_argument('--videoPath', type=str, required=True, help='Path to the input video file')
+    args = parser.parse_args()
+    
+    main(args.videoPath, args.modelPath)
